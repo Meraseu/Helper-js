@@ -7,6 +7,22 @@
 		this.userAgent = (navigator.userAgent || '').toLowerCase();
     }
     onePiece.Helper.prototype = {
+		setAttr : function(element, attr) {
+			if(!element) {
+				return false;
+			}
+			for (var idx in attr) {
+				if ((idx == 'styles' || idx == 'style') && typeof attr[idx] == 'object') {
+					for (var prop in attr[idx]) {
+						element.style[prop] = attr[idx][prop];
+					}
+				} else if (idx == 'html') {
+					element.innerHTML = attr[idx];
+				} else {
+					element.setAttribute(idx, attr[idx]);
+				}
+			}
+		},
         addClass : function(element, className) {
 			if(element.classList) {
 				element.classList.add(className);
@@ -63,7 +79,28 @@
 				element = node;
 			}
 			return nodes;
-        }
+		},
+		getOffsetTop : function(element) {
+			if(!element) {
+				return false;
+			}
+			var offsetTop = 0;
+			do {
+				if (!isNaN( element.offsetTop )) {
+					offsetTop += element.offsetTop;
+				}
+			} while ( element = element.offsetParent );
+			return offsetTop;
+		},
+		getOffsetLeft : function(element) {
+			var offsetLeft = 0;
+			do {
+				if (!isNaN( element.offsetLeft )) {
+					offsetLeft += element.offsetLeft;
+				}
+			} while ( element = element.offsetParent );
+			return offsetLeft;
+		}
     }
 
     onePiece.helper = new onePiece.Helper();
