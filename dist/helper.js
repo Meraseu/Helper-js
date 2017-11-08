@@ -1,5 +1,3 @@
-'use strict'
-
 ;(function(onePiece) {
 
     onePiece.Helper = function() {
@@ -27,7 +25,7 @@
 			if(element.classList) {
 				element.classList.add(className);
 			} else if(!this.hasClass(element, className)) {
-				element.className += ' ' + className;							
+				element.className += ' ' + className;
 			}
 		},		
 		removeClass : function(element, className) {
@@ -48,7 +46,7 @@
 		},
         getChiildNode : function(element, selector) {
 			var elements = [];
-			(function loop(element) {				
+			(function loop(element) {
 				var nodes = element.childNodes;
 				for(var i = 0, length = nodes.length; i < length; i++) {
 					var node = nodes[i];
