@@ -171,5 +171,7 @@ window.Helperjs = (function (helperjs) {
 			return (/blackberry/.test(userAgent) || /bb10/.test(userAgent)) ? true : false;
 		}
 	}
-	return new helperjs();
+	if (!(this instanceof helperjs)) {
+		return new helperjs();
+	}
 })(window.helperjs || {});
