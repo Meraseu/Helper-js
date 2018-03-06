@@ -5,7 +5,7 @@ window.Helperjs = (function (helperjs) {
 	}
 	helperjs.prototype = {
 		setAttr: function (element, attr) {
-			if (!element) {
+			if(!element) {
 				return false;
 			}
 			for (var idx in attr) {
@@ -21,6 +21,9 @@ window.Helperjs = (function (helperjs) {
 			}
 		},
 		addClass: function (element, className) {
+			if(!element) {
+				return false;
+			}
 			if (element.classList) {
 				element.classList.add(className);
 			} else if (!this.hasClass(element, className)) {
@@ -28,6 +31,9 @@ window.Helperjs = (function (helperjs) {
 			}
 		},
 		removeClass: function (element, className) {
+			if(!element) {
+				return false;
+			}
 			if (element.classList) {
 				element.classList.remove(className);
 			} else {
@@ -35,15 +41,24 @@ window.Helperjs = (function (helperjs) {
 			}
 		},
 		hasClass: function (element, className) {
+			if(!element) {
+				return false;
+			}
 			return element.classList ? element.classList.contains(className) : new RegExp('\\b' + className + '\\b').test(element.className);
 		},
 		toggleClass: function (element, className) {
+			if(!element) {
+				return false;
+			}
 			if (!element || !className) {
 				return false;
 			}
 			this.hasClass(element, className) ? this.removeClass(element, className) : this.addClass(element, className);
 		},
 		getChiildNode: function (element, selector) {
+			if(!element) {
+				return false;
+			}
 			var elements = [];
 			(function loop(element) {
 				var nodes = element.childNodes;
@@ -61,6 +76,9 @@ window.Helperjs = (function (helperjs) {
 			return elements;
 		},
 		getParentNode: function (element, selector) {
+			if(!element) {
+				return false;
+			}
 			var nodes = [];
 			var element = element;
 			while (element.parentNode) {
@@ -90,6 +108,9 @@ window.Helperjs = (function (helperjs) {
 			return offsetTop;
 		},
 		getOffsetLeft: function (element) {
+			if(!element) {
+				return false;
+			}
 			var offsetLeft = 0;
 			do {
 				if (!isNaN(element.offsetLeft)) {
@@ -167,7 +188,7 @@ window.Helperjs = (function (helperjs) {
 		isAndroid: function () {
 			return /android/.test(this.userAgent);
 		},
-		isBlackberry : function () {
+		isBlackberry: function () {
 			return (/blackberry/.test(userAgent) || /bb10/.test(userAgent)) ? true : false;
 		}
 	}
