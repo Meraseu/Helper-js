@@ -1,9 +1,9 @@
 'use strict';
 
-var appVersion = (navigator.appVersion || '').toLowerCase(),
-    userAgent = (navigator.userAgent || '').toLowerCase();
+const appVersion = (navigator.appVersion || '').toLowerCase(); 
+const userAgent = (navigator.userAgent || '').toLowerCase();
 
-module.exports = {
+export default {
     addEventListener: function(element, event, fn) {
         if(!element) {
             return;
@@ -314,5 +314,5 @@ module.exports = {
         if(window['console'] != 'undefined') {
             console.log(message);
         }
-    }
+    }    
 }

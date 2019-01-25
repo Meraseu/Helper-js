@@ -1,21 +1,19 @@
 'use strict';
 
-var helpers = require('./Core');
-
-module.exports = {
-    getNaturalSize: function(image) {
-        return  {
+export default {
+    getNaturalSize(image) {
+        return {
             'width': image.naturalWidth,
             'height': image.naturalHeight,
         }
     },
-    getResizeCalculator: function(image, maxWidth, maxHeight) {
-        var ratio = 0,
-            size = this.getNaturalSize(image),
-            width = size.width,
-            height = size.height,
-            type = (width > height) ? 'width' : 'height',
-            isresize = false;
+    getResizeCalculator(image, maxWidth, maxHeight) {
+        const size = this.getNaturalSize(image);
+        let ratio = 0;
+        let width = size.width;
+        let height = size.height;
+        const type = (width > height) ? 'width' : 'height';
+        let isresize = false;
         if(type == 'width') {
             if(width > maxWidth) {
                 ratio = maxWidth / width;
@@ -43,5 +41,5 @@ module.exports = {
                 'height': height
             }
         }
-    }
+    } 
 }
