@@ -310,6 +310,15 @@ export default {
     isBlackberry: function () {
         return (/blackberry/.test(userAgent) || /bb10/.test(userAgent)) ? true : false;
     },
+    getUniqueId: function() {
+        let array = new Uint32Array(8);
+        window.crypto.getRandomValues(array);
+        let str = '';
+        for (let i = 0; i < array.length; i++) {
+            str += (i < 2 || i > 5 ? '' : '-') + array[i].toString(16).slice(-4)
+        }
+        return str;
+    },
     console: function(message) {
         if(window['console'] != 'undefined') {
             console.log(message);
